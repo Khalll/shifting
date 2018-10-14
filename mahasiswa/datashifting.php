@@ -3,7 +3,7 @@
 <?php
 
 session_start();
-
+//ini session start
 ?>
 <html>
 <head>
