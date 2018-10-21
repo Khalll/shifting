@@ -15,6 +15,9 @@ $tgl2_m3 = $_POST['tgl2_m3'];
 $tgl1_m4 = $_POST['tgl1_m4'];
 $tgl2_m4 = $_POST['tgl2_m4'];
 
+$tgl1_m5 = $_POST['tgl1_m5'];
+$tgl2_m5 = $_POST['tgl2_m5'];
+
 $jadwal_m1 = $_POST['jadwal_m1'];
 
 $jadwal_m2 = $_POST['jadwal_m2'];
@@ -22,6 +25,9 @@ $jadwal_m2 = $_POST['jadwal_m2'];
 $jadwal_m3 = $_POST['jadwal_m3'];
 
 $jadwal_m4 = $_POST['jadwal_m4'];
+
+$jadwal_m5 = $_POST['jadwal_m5'];
+
 $id_pengajuan = '';
 
 // Adding data to Pengajuan table
@@ -71,4 +77,16 @@ for ($i=0; $i < count($tgl1_m4); $i++) {
 }
 
 }
+
+for ($i=0; $i < count($tgl1_m5); $i++) { 
+	$sql1 = "INSERT INTO `jadwal_shifting`(`id_pengajuan`, `minggu`, `tanggal_1`, `tanggal_2`, `jadwal`) VALUES ('".$id_pengajuan."',5,'".$tgl1_m5[$i]."','".$tgl2_m5[$i]."','".$jadwal_m5[$i]."')";
+	$execute = mysqli_query($conn,$sql1);
+	if ($execute) {
+		echo "<script> window.location='datashifting.php'; </script>";
+
+
+}
+
+}
+
 ?>

@@ -194,7 +194,7 @@ session_start();
 
         <?php
         include '../config/conn.php';
-        //// Diubah Query sesuai User yang Log-in
+        //// //Diubah Query sesuai User yang Log-in
        
         $query = "SELECT p.*, j.tanggal_1 FROM pengajuan p
                   LEFT JOIN (SELECT DISTINCT id_pengajuan, MIN(tanggal_1) AS tanggal_1 FROM jadwal_shifting GROUP BY id_pengajuan) j
@@ -239,7 +239,7 @@ session_start();
       </table>
     </section>
 
-     
+    
     <!-- /.content -->
   </div>
 
