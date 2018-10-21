@@ -194,17 +194,26 @@ session_start();
 
         <?php
         include '../config/conn.php';
-        $query = "select * from pengajuan";
+        //// Diubah Query sesuai User yang Log-in
+       
+        $query = "SELECT p.*, j.tanggal_1 FROM pengajuan p
+                  LEFT JOIN (SELECT DISTINCT id_pengajuan, MIN(tanggal_1) AS tanggal_1 FROM jadwal_shifting GROUP BY id_pengajuan) j
+                    ON p.id_pengajuan = j.id_pengajuan WHERE nim = '".$_SESSION['nim']."'";
         $execute =  mysqli_query($conn, $query);
         $no = 1;
-        while ( $data = mysqli_fetch_array($execute)) { $id_pengajuan = $data['id_pengajuan']; ?>  
+        while ( $data = mysqli_fetch_array($execute)) { $id_pengajuan = $data['id_pengajuan']; 
+        ?>  
         
         <tr>
+
+
+
+
           <td><?php echo $no; ?></td>
 
           <td> 
           <?php 
-          $tgl = $data['tanggal']; 
+          $tgl = $data['tanggal_1']; 
           echo date('F',strtotime($tgl));
           ?> 
         </td>
