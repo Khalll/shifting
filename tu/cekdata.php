@@ -149,7 +149,7 @@ session_start();
           </a>
           <ul class="treeview-menu">
             <li><a href="cekdata.php"><i class="fa fa-book"></i> Cek Data</a></li>
-            <li><a href="tambahdatabaru.php"><i class="fa fa-spinner"></i>Tambah Data Mahasiswa</a></li>
+            <li><a href="data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
           </ul>
         </li>    
       </ul>

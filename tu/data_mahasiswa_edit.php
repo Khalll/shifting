@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-
+<html>
 <?php
 
 session_start();
 
 ?>
-<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Jadwal Shifting | Tambah Mahasiswa</title>
+  <title>Jadwal Shifting|  Data Shifting</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -33,6 +31,16 @@ session_start();
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style type="text/css">
+    .container-border{
+       border: 2px solid #ccc;
+       border-radius: 1px;  
+       padding-left: 20px;
+       padding-right: 20px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -142,26 +150,18 @@ session_start();
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-angle-double-down"></i> <span>Data</span>
+            <i class="fa fa-angle-double-down"></i> <span>DATA</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="cekdata.php"><i class="fa fa-book"></i> Cek Data</a></li>
-            <li><a href="tambahdatabaru.php"><i class="fa fa-spinner"></i>Tambah Data Mahasiswa</a></li>
+            <li><a href="data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
           </ul>
         </li>
-
-
-       
-
-
-        
-       
-       
-           
       </ul>
+
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -172,51 +172,73 @@ session_start();
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    
-        <h2 align="center"><b>Tambah Mahasiswa</b>
-        <small></small>
+    <?php 
+    include('../config/conn.php');
+	$id_user = $_GET['id'];
+
+	$sql = "SELECT * FROM mhs, user_detail WHERE mhs.user_id = user_detail.user_id AND mhs.user_id= $id_user";
+
+	$execute = mysqli_query($conn,$sql); //untuk eksekusi query di $sql
+	$data = mysqli_fetch_array($execute);
+
+	?>
+	  <h2 align="center"><b>Edit Data Mahasiswa</b>
+      <small></small>
       </h2>
+      <form action="edit_mhs_config.php" method="post">
+      <b>ID User</b>
+      <input type="" class="form-control" name="user_id" value= "<?php echo $data['user_id']; ?>" required="" readonly>
+
+      <b>Nim</b>
+      <input type="" class="form-control" name="nim" value= "<?php echo $data['nim']; ?>" required="" readonly>
+
+      <b>Nama</b>
+      <input type="" class="form-control" name="nama" value= "<?php echo $data['nama'] ?>" required="">
+
+      <b>Prodi</b>
+      <select name ="prodi" class="form-control">
+        <option> Pilih Prodi</option>
+        <?php
+        include('../config/conn.php');
+        $sql = "select * from prodi";
+        $execute = mysqli_query($conn,$sql);
+        while($data = mysqli_fetch_array($execute)){ ?>
+           <option value="<?php echo $data['id']; ?>"> <?php echo $data['nama_prodi']; ?></option>
+
+        <?php } ?>
+      </select>
+
+      <b>Tahun Masuk</b>
+      <input type="" class="form-control" name="tahun_masuk" value= "<?php echo $data['tahun_masuk']; ?>" required="">
+
+      <b>Alamat</b>
+      <input type="" class="form-control" name="alamat" value= "<?php echo $data['alamat']; ?>" required="">
+
+      <b>No. Hp</b>
+      <input type="" class="form-control" name="no_telp" value= "<?php echo $data['no_telp']; ?>" required="">
+      <br>
+      <center><button type="submit" class="btn btn-primary" > SIMPAN </button></center>
       
+
+    </form>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="col-md-6">
-      <b>NIM</b>
-      <input type="" class="form-control" name="nama">
-       <b>NAMA</b>
-      <input type="" class="form-control" name="nama">
-       <b>PROGRAM STUDI</b>
-      <input type="" class="form-control" name="nama"><br>
-      <b>TAHUN MASUK</b>
-      <input type="" class="form-control" name="nama"><br>
-      <b>SEMESTER</b>
-      <input type="" class="form-control" name="nama"><br>
-      <b>GROUP</b>
-      <input type="" class="form-control" name="nama"><br>
-      <b>USER ID</b>
-      <input type="" class="form-control" name="nama"><br>
-      <b>PASSWORD</b>
-      </div>
+<br>
 
-     
+
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>UPT-SI</b>  
+      <b>Proyek Akhir 1</b>  
     </div>
-    <strong>Copyright &copy; 2018-2019 Proyek Akhir 1</strong>
+    <strong>Copyright &copy; 2018-2019 </strong>
   </footer>
 
-  <!-- Control Sidebar -->
-  
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+
 </div>
 <!-- ./wrapper -->
 
@@ -237,5 +259,10 @@ session_start();
     $('.sidebar-menu').tree()
   })
 </script>
+
+
+
+
+
 </body>
 </html>

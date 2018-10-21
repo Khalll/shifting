@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <?php
 
 session_start();
@@ -9,7 +8,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Jadwal Shifting|  Detail Shifting</title>
+  <title>Jadwal Shifting|  Data Shifting</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -33,6 +32,16 @@ session_start();
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style type="text/css">
+    .container-border{
+       border: 2px solid #ccc;
+       border-radius: 1px;  
+       padding-left: 20px;
+       padding-right: 20px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -44,7 +53,7 @@ session_start();
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J</b> S</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Detail</b> Shifting</span>
+      <span class="logo-lg"><b>Jadwal</b> Shifting</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -142,26 +151,18 @@ session_start();
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-angle-double-down"></i> <span>Data</span>
+            <i class="fa fa-angle-double-down"></i> <span>DATA</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="cekdata.php"><i class="fa fa-book -text"></i> Check Data</a></li>
+            <li><a href="cekdata.php"><i class="fa fa-book"></i> Cek Data</a></li>
             <li><a href="data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
           </ul>
         </li>
-
-
-       
-
-
-        
-       
-       
-           
       </ul>
+
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -173,87 +174,64 @@ session_start();
     <!-- Content Header (Page header) -->
     <section class="content-header">
     
-        <h2 align="center"><b>Detail Shifting</b>
-         
-        
+       <h2 align="center"><b>DATA Mahasiswa </b>
+        <small></small>
+        <br>
+        <br>
+        <div style="text-align: right; padding-right: 10%;"><a href="tambahdatabaru.php" class="btn btn-success"><i class="fa fa-user-plus"></i> Tambah Mahasiswa  </a></div>
+        <br>
       </h2>
-      
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-         <table class="table table-hover table-striped table-bordered">
+      <table class="table table-hover table-bordered">
+       <thead>
         <tr>
-          <th width="5%"> No </th>
-           <th width="20%"> Minggu </th>
-          <th width="20%"> Tanggal Awal</th>
-          <th width="20%"> Tanggal Akhir</th>
-          <th width="20%"> Jadwal Shift</th>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Prodi</th>
+          <th>Tahun Masuk</th>
+          <th>UserName</th>
+          <th>Config</th>
         </tr>
+       </thead>
+       <tbody>
+        <?php                               //terjadi perlumpingan
+        include('../config/conn.php');
+        $sql = "select * from mhs,user where mhs.user_id = user.user_id";
+        $execute = mysqli_query($conn,$sql);
+        while($data = mysqli_fetch_array($execute)){ ?>
 
-        <?php
-        include '../config/conn.php';
-        $id = $_GET['id'];
-        $query = "select * from jadwal_shifting where id_pengajuan = $id";
-        $execute =  mysqli_query($conn, $query);
-        $no = 1;
-        while ( $data = mysqli_fetch_array($execute)) { $id_pengajuan = $data['id_pengajuan']; ?>  
-        
-        <tr>
-          <td><?php echo $no; ?></td>
-          
-          <td> 
-          <?php 
-          $minggu  = $data['minggu']; 
-          echo(($minggu));
-          ?>
+           <tr>
+          <td><?php echo $data['nim']; ?></td>
+          <td><?php echo $data['nama']; ?></td>
+          <td><?php echo $data['prodi']; ?></td>
+          <td><?php echo $data['tahun_masuk']; ?></td>
+          <td><?php echo $data['username']; ?></td>
+          <td><a href="data_mahasiswa_edit.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-success btn-sm"><i class="fa fa-pencil fa-fw"></i> EDIT</a>
+              <a href="data_mahasiswa_hapus.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-danger btn-sm">
+          <i class="fa fa-close fa-fw"></i> HAPUS</a>
           </td>
-
-           <td> 
-          <?php 
-          $tanggalawal = $data['tanggal_1']; 
-          echo(($tanggalawal));
-          ?> 
-        </td>
-        <td>
-        <?php 
-          $tanggalakhir = $data['tanggal_2']; 
-          echo(($tanggalakhir));
-          ?> 
-       </td>
-
-       <td>
-         <?php
-         $jadwalshift = $data['jadwal'];
-         echo(($jadwalshift));
-         ?>
-       </td>
         </tr>
-       <?php $no++; } ?>
-
+        <?php } ?>                          <!-- selesai terjadi perlumpingan -->
         
+       </tbody>
       </table>
     </section>
 
-     
+<br>
+
+
+
     <!-- /.content -->
   </div>
-
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Proyek Akhir 1</b>  
     </div>
-    <strong>Copyright &copy; 2018-2019</strong>
+    <strong>Copyright &copy; 2018-2019 </strong>
   </footer>
 
-  <!-- Control Sidebar -->
-  
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+
 </div>
 <!-- ./wrapper -->
 
@@ -274,5 +252,10 @@ session_start();
     $('.sidebar-menu').tree()
   })
 </script>
+
+
+
+
+
 </body>
 </html>
