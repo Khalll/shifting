@@ -145,6 +145,7 @@ var wid = '413547';
         $execute3 = mysqli_query($conn,$query3);
         $data3 = mysqli_fetch_array($execute3);
         $_SESSION['nama'] = $data3['nama'];
+        $_SESSION['user_id'] = $data3['user_id'];
         echo"<script> window.location='tu/'; </script>";
 
         

@@ -228,11 +228,20 @@ session_start();
          echo(($jadwalshift));
          ?>
        </td>
+       
         </tr>
        <?php $no++; } ?>
+       </table>
+       <td>
+        <!-- <form action="detail_shifting_setuju_config.php" method="post"> -->
+         <a href="penyetujuan_shifting.php?id=<?php echo $_GET['id'];?>&act=1" type="button" class="btn btn-success"><i class="fa fa-check"></i>Disetujui</a>
+       </td>
+       <td>
+         <a href="penolakan_shifting.php?id=<?php echo $_GET['id'];?>&act=2" type="button" class="btn btn-danger"><i class="fa fa-close"></i>Ditolak</a>
+       </td>
 
         
-      </table>
+      
     </section>
 
      
