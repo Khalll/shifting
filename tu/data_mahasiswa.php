@@ -178,7 +178,7 @@ session_start();
         <small></small>
         <br>
         <br>
-        <div style="text-align: right; padding-right: 10%;"><a href="tambahdatabaru.php" class="btn btn-success"><i class="fa fa-user-plus"></i> Tambah Mahasiswa  </a></div>
+        <div style="text-align: right; padding-right: 10%;"><a href="tambahdatabaru.php" class="btn btn-primary"><i class="fa fa-user-plus"></i> Tambah Mahasiswa  </a></div>
         <br>
       </h2>
       <table class="table table-hover table-bordered">
@@ -205,9 +205,9 @@ session_start();
           <td><?php echo $data['prodi']; ?></td>
           <td><?php echo $data['tahun_masuk']; ?></td>
           <td><?php echo $data['username']; ?></td>
-          <td><a href="data_mahasiswa_edit.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-success btn-sm"><i class="fa fa-pencil fa-fw"></i> EDIT</a>
-              <a href="data_mahasiswa_hapus.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-danger btn-sm">
-          <i class="fa fa-close fa-fw"></i> HAPUS</a>
+          <td>
+            <a href="data_mahasiswa_edit.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-success btn-sm"><i class="fa fa-pencil fa-fw"></i> EDIT DATA </a>
+            <a href="data_mahasiswa_edit_pass.php?id=<?php echo $data['user_id']; ?>" type="submit" class="btn btn-warning btn-sm"><i class="fa fa-close fa-fw"></i> EDIT PASSWORD </a>
           </td>
         </tr>
         <?php } ?>                          <!-- selesai terjadi perlumpingan -->

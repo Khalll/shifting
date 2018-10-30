@@ -186,9 +186,6 @@ session_start();
       <small></small>
       </h2>
       <form action="edit_mhs_config.php" method="post">
-      <b>ID User</b>
-      <input type="" class="form-control" name="user_id" value= "<?php echo $data['user_id']; ?>" required="" readonly>
-
       <b>Nim</b>
       <input type="" class="form-control" name="nim" value= "<?php echo $data['nim']; ?>" required="" readonly>
 

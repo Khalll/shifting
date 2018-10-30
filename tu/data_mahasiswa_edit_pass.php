@@ -174,63 +174,41 @@ session_start();
     <section class="content-header">
     <?php 
     include('../config/conn.php');
-	$id_user = $_GET['id'];
+  $id_user = $_GET['id'];
 
-	$sql = "SELECT * FROM mhs, user_detail WHERE mhs.user_id = user_detail.user_id AND mhs.user_id= $id_user";
+  $sql = "SELECT * FROM mhs, user WHERE mhs.user_id = user.user_id AND mhs.user_id= $id_user";
 
-	$execute = mysqli_query($conn,$sql); //untuk eksekusi query di $sql
-	$data = mysqli_fetch_array($execute);
+  $execute = mysqli_query($conn,$sql); //untuk eksekusi query di $sql
+  $data = mysqli_fetch_array($execute);
 
-	?>
-	  <h2 align="center"><b>Edit Password Mahasiswa</b>
+  ?>
+    <h2 align="center"><b>Edit Password Mahasiswa</b>
       <small></small>
       </h2>
       <form action="edit_mhs_config.php" method="post">
-      <b>ID User</b>
-      <input type="" class="form-control" name="user_id" value= "<?php echo $data['user_id']; ?>" required="" readonly>
-
       <b>Nim</b>
       <input type="" class="form-control" name="nim" value= "<?php echo $data['nim']; ?>" required="" readonly>
 
       <b>Nama</b>
       <input type="" class="form-control" name="nama" value= "<?php echo $data['nama'] ?>" required="" readonly>
+      <b>Username</b>
+      <input type="" class="form-control" name="username" value= "<?php echo $data['username']; ?>" required="" readonly>
 
-      <b>Prodi</b>
-      <input type="" class="form-control" name="prodi" value= "<?php
-      $prodi = $data['prodi'];
-      if ($prodi == "1") {
-          echo "Teknik Informatika";
-        }if ($prodi == "2") {
-          echo "Teknik Geomatika";
-        }if ($prodi == "3") {
-          echo "Teknik Multimedia dan Jaringan";
-        }if ($prodi == "4") {
-          echo "Animasi";
-        }if ($prodi == "5") {
-          echo "Akuntansi";
-        }if ($prodi == "6") {
-          echo "Akuntansi Manajerial";
-        }if ($prodi == "7") {
-          echo "Administrasi Bisnis Terapan";
-        }if ($prodi == "8") {
-          echo "Teknik Mesin";
-        }if ($prodi == "9") {
-          echo "Teknik Perawatan Pesawat Udara";
-        }if ($prodi == "10") {
-          echo "Teknik Perencanaan dan Konstruksi Kapal";
-        }
-        ?>"required="" readonly>
-   
       <b>Password</b>
-      <input type="password" class="form-control" name="password" value= "" required="">
-      <br>
+      <input type="password" class="form-control" name="password" value= "<?php echo $data['password']; ?>" required="">
 
+      <b>Repassword</b>
+      <input type="password" class="form-control" name="password" value= "<?php echo $data['password']; ?>" required="">
+     
+      
       <br>
       <center><button type="submit" class="btn btn-primary" > SIMPAN </button></center>
+      
+
     </form>
     </section>
-<br>
 
+<br>
 
 
 
@@ -266,5 +244,10 @@ session_start();
     $('.sidebar-menu').tree()
   })
 </script>
+
+
+
+
+
 </body>
 </html>
