@@ -204,7 +204,7 @@ session_start();
     <!-- Main content -->
     <section class="content">
        <h2 align="center"><b>Jadwal Shift</b></h2>
-       <form action="ajukan_shifting_config.php" method="post">
+       <form action="prosespengajuan.php" method="post">
          
        
        <!---------------------------------------- -->

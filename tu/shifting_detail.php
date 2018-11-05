@@ -152,14 +152,14 @@ session_start();
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-angle-double-down"></i> <span>Shifting</span>
+            <i class="fa fa-angle-double-down"></i> <span>Data</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="ajukanshifting.php"><i class="fa fa-book"></i> Ajukan Shifting</a></li>
-            <li><a href="datashifting.php"><i class="fa fa-spinner"></i> Data Shifting</a></li>
+            <li><a href="cekdata.php"><i class="fa fa-book -text"></i> Check Data</a></li>
+            <li><a href="data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
           </ul>
         </li>
       </ul>
