@@ -194,6 +194,11 @@ session_start();
         <?php
         include '../config/conn.php';
         $id = $_GET['id'];
+        $queryx = "select * from Pengajuan where id_pengajuan = $id";
+        $executex =  mysqli_query($conn, $queryx);
+        $datax = mysqli_fetch_array($executex);
+        $status = $datax['status'];
+
         $query = "select * from jadwal_shifting where id_pengajuan = $id";
         $execute =  mysqli_query($conn, $query);
         $no = 1;
@@ -232,17 +237,53 @@ session_start();
         </tr>
        <?php $no++; } ?>
        </table>
-       <td>
-        <!-- <form action="detail_shifting_setuju_config.php" method="post"> -->
-         <a href="penyetujuan_shifting.php?id=<?php echo $_GET['id'];?>&act=1" type="button" class="btn btn-success"><i class="fa fa-check"></i>Disetujui</a>
-       </td>
-       <td>
-         <a href="penolakan_shifting.php?id=<?php echo $_GET['id'];?>&act=2" type="button" class="btn btn-danger"><i class="fa fa-close"></i>Ditolak</a>
-       </td>
+      </section>
 
-        
-      
-    </section>
+        <!-- <form action="detail_shifting_setuju_config.php" method="post"> -->
+         <div align="center">
+          <?php 
+          if(!empty($_GET['status'])){
+            $status = 'edit';
+          }
+          if($status=='0' || $status=='edit'){ ?>
+              <a href="penyetujuan_shifting.php?id=<?php echo $_GET['id'];?>&act=1" type="button" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Disetujui</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><i class="fa fa-close fa-fw" > </i>Ditolak</button>
+          <?php }else{ ?>
+            <a href="detail-shifting.php?id=<?php echo $_GET['id'];?>&status=edit" type="button" class="btn btn-info"><i class="fa fa-pencil fa-fw"></i>Edit</a>
+          <?php } ?>
+           
+        </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Alasan Ditolak</h4>
+          </div>
+          <div class="modal-body">
+            <form action="penolakan_shifting.php" method="get">
+            <input style="display: none;" type="text" name="id" class="form-control" value="<?php echo $_GET['id']; ?>" readonly>
+            <input style="display: none;" type="text" name="act" class="form-control" value="2" readonly>
+            <textarea name="comment" class="form-control" required=""></textarea>
+            <br>
+            <br>
+            <div align="center">            
+           <button type="submit" class="btn btn-danger">Tolak Pengajuan</button>
+            </div>
+          </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
 
      
     <!-- /.content -->

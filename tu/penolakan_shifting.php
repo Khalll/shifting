@@ -5,10 +5,11 @@ $id_pengajuan = $_GET['id'];
 $aksi = $_GET['act'];
 $user_id = $_SESSION['user_id'];
 $name = $_SESSION['nama'];
+$comment = $_GET['comment'];
 
 if ($aksi = '2') {
 	//disetujui
-  $sql = "UPDATE `pengajuan` SET status= '$aksi' WHERE id_pengajuan= '$id_pengajuan'";
+  $sql = "UPDATE `pengajuan` SET status= '$aksi', comment= '$comment' WHERE id_pengajuan= '$id_pengajuan'";
   $execute = mysqli_query($conn,$sql);
 
 		echo "<script> alert('Penolakan Sukses'); window.location ='cekdata.php';</script>";

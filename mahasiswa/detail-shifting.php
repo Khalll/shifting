@@ -194,6 +194,10 @@ session_start();
         <?php
         include '../config/conn.php';
         $id = $_GET['id'];
+        $queryx = "select * from pengajuan where id_pengajuan = $id";
+        $executex =  mysqli_query($conn, $queryx);
+        $datax = mysqli_fetch_array($executex);
+
         $query = "select * from jadwal_shifting where id_pengajuan = $id";
         $execute =  mysqli_query($conn, $query);
         $no = 1;
@@ -230,10 +234,17 @@ session_start();
        </td>
         </tr>
        <?php $no++; } ?>
-
-        
       </table>
     </section>
+
+	<div class="container">
+	  <form>
+	    <div class="form-group">
+	      <label for="comment"><h3>Comment:</h3></label>
+	      <textarea class="form-control" rows="6" id="comment" value= "<?php echo $comment;?>" readonly=""><?php echo $datax['comment']; ?>  </textarea>
+	    </div>
+	  </form>
+	</div>
 
      
     <!-- /.content -->

@@ -223,11 +223,11 @@ session_start();
           $status = $data['status']; 
 
           if ( $status == "0") {
-            echo "Di Ajukan";
+            echo "<label class='badge alert-dark alert-sm'> Di Ajukan </label>";
           }elseif ($status == "1") {
-          echo "Di Setujui";
+          echo "<label class='badge alert-success alert-sm'> Di Setujui </label>";
         }else{
-          echo "Di Tolak";
+          echo "<label class='badge alert-danger alert-sm'> Di Tolak </label>";
         }
           ?>   
           </td>
