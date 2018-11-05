@@ -255,7 +255,7 @@ session_start();
         }
         ?> </td>
 
-        <td><a href="detail-shifting.php?id=<?php echo $id_pengajuan; ?>" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Cek Detail</a></td>
+        <td><a href="shifting_detail.php?id=<?php echo $id_pengajuan; ?>" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Cek Detail</a></td>
       </tr>
 
       <?php $no++; } ?>
