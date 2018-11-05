@@ -351,6 +351,42 @@ session_start();
           }
 
       </script>
+
+       <b>Minggu 5</b>
+     <div class="container-border" id="minggu5">
+        <div class="row">
+          <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m5[]" placeholder="date"> </div>
+          <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m5[]" placeholder="date"> </div>
+          <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m5[] required">
+            <option value=""> </option>
+            <option value="pagi"> Shift Pagi</option>
+            <option value="malam"> Shift Malam</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          Option
+          <br><button id="btn_row1" type="button" onclick="tambahrow5()" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Tanggal  </button>
+        </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+          var m5=1;
+          function tambahrow5(){
+              
+              $("#minggu5").append('<div id="m5-'+m5+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m5[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m5[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m5[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div><div class="col-md-1">Option <button class="btn btn-warning" onclick="hapusrow5('+m5+')"  ><i class="fa fa-minus"> </i> Hapus  </button></div></div>');
+              m5++;
+          }
+
+          function hapusrow5(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu5");
+              var child = document.getElementById("m5-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+      
       <br>
       <button type="submit" class="btn btn-success btn-block">Ajukan Shifting</button>
 </form>
