@@ -214,7 +214,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -266,7 +266,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -304,7 +304,7 @@ session_start();
           while ( $datax = mysqli_fetch_array($executex)){ ?>
          
       <div class="row">
-        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m3[]" placeholder="date" value="<?php echo $datax['tanggal_3'] ?>" readonly> </div>
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m3[]" placeholder="date" value="<?php echo $datax['tanggal_1'] ?>" readonly> </div>
         
         <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m3[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
         
@@ -320,7 +320,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -373,7 +373,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -426,7 +426,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>

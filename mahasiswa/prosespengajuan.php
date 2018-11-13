@@ -31,7 +31,7 @@ $jadwal_m5 = $_POST['jadwal_m5'];
 $id_pengajuan = '';
 
 // Adding data to Pengajuan table
-$query = "INSERT INTO `pengajuan`(`tanggal`, `nim`, `status`) VALUES (sysdate(),'".$nim."',0)";
+$query = "INSERT INTO `pengajuan`(`nim`, `status`) VALUES ('".$nim."',0)";
 $execute = mysqli_query($conn,$query);
 
 
