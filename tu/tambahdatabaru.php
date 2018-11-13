@@ -212,7 +212,7 @@ session_start();
       <b>Password</b>
       <input type="password" class="form-control" name="password" value= "" required="">
       <br>
-      <center><button type="submit" class="btn btn-primary" > SIMPAN </button></center>
+      <center><button type="submit" class="btn btn-primary btn-block" > SIMPAN </button></center>
       
 
     </form>

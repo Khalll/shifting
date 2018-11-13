@@ -171,77 +171,297 @@ session_start();
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-    
-        <h2 align="center"><b>Detail Shifting</b>
-         
-        
-      </h2>
-      
-    </section>
-
-    <!-- Main content -->
     <section class="content">
-         <table class="table table-hover table-striped table-bordered">
-        <tr>
-          <th width="5%"> No </th>
-           <th width="20%"> Minggu </th>
-          <th width="20%"> Tanggal Awal</th>
-          <th width="20%"> Tanggal Akhir</th>
-          <th width="20%"> Jadwal Shift</th>
-        </tr>
+       <h3 align="center"><b>Cek Detail</b></h3>
+       <form action="ajukan_shifting_config.php" method="post">
 
+      <?php
+      include '../config/conn.php';
+      $id =  $_GET['id'];
+      $query = "SELECT * FROM mhs, prodi, pengajuan WHERE mhs.prodi = prodi.id AND mhs.nim = pengajuan.nim AND pengajuan.id_pengajuan = '$id'";
+      $execute = mysqli_query($conn,$query);
+      $data = mysqli_fetch_array($execute);
+      $status = $data['status'];
+
+
+      $nama = $data['nama'];
+      $nim = $data['nim'];
+      $nama_prodi = $data['nama_prodi'];
+      ?>
+
+<!----------------------------------------------------------------------------------->
+    <b>Minggu 1</b>
+      <div class="container-border" id="minggu1">
         <?php
-        include '../config/conn.php';
-        $id = $_GET['id'];
-        $queryx = "select * from pengajuan where id_pengajuan = $id";
-        $executex =  mysqli_query($conn, $queryx);
-        $datax = mysqli_fetch_array($executex);
-
-        $query = "select * from jadwal_shifting where id_pengajuan = $id";
-        $execute =  mysqli_query($conn, $query);
-        $no = 1;
-        while ( $data = mysqli_fetch_array($execute)) { $id_pengajuan = $data['id_pengajuan']; ?>  
+          $queryx = "select * from jadwal_shifting where id_pengajuan = $id AND minggu='1'";
+          $executex =  mysqli_query($conn, $queryx);
+          while ( $datax = mysqli_fetch_array($executex)){ ?>
+         
+      <div class="row">
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m1[]" placeholder="date" value="<?php echo $datax['tanggal_1'] ?>" readonly> </div>
         
-        <tr>
-          <td><?php echo $no; ?></td>
-          
-          <td> 
-          <?php 
-          $minggu  = $data['minggu']; 
-          echo(($minggu));
-          ?>
-          </td>
+        <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m1[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m1[]" required="" disabled>
+            <option value=""> </option>
+            <option value="pagi" 
+                <?php 
+                  $jadwal= $datax['jadwal'];
+                    if($jadwal == "pagi") {
+                      echo "selected";
+                    }
+                ?>> Shift Pagi</option>
+            <option value="malam"
+                <?php 
+                  $jadwall= $datax['jadwal'];
+                    if($jadwall == "Malam") {
+                      echo "selected";
+                    }
+                ?>> Shift Malam</option>
+              </select>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
 
-           <td> 
-          <?php 
-          $tanggalawal = $data['tanggal_1']; 
-          echo(($tanggalawal));
-          ?> 
-        </td>
-        <td>
-        <?php 
-          $tanggalakhir = $data['tanggal_2']; 
-          echo(($tanggalakhir));
-          ?> 
-       </td>
+      <script type="text/javascript">
+          var m1=1;
+          function tambahrow1(){
+              
+              $("#minggu1").append('<div id="m1-'+m1+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m1[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m1[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m1[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div>');
+              m1++;
+          }
 
-       <td>
-         <?php
-         $jadwalshift = $data['jadwal'];
-         echo(($jadwalshift));
-         ?>
-       </td>
-        </tr>
-       <?php $no++; } ?>
-      </table>
-    </section>
+          function hapusrow1(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu1");
+              var child = document.getElementById("m1-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+
+<!----------------------------------------------------------------------------------->
+    <b>Minggu 2</b>
+      <div class="container-border" id="minggu2">
+        <?php
+          $queryx = "select * from jadwal_shifting where id_pengajuan = $id AND minggu='2'";
+          $executex =  mysqli_query($conn, $queryx);
+          while ( $datax = mysqli_fetch_array($executex)){ ?>
+         
+      <div class="row">
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m2[]" placeholder="date" value="<?php echo $datax['tanggal_1'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m2[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m2[]" required="" disabled>
+            <option value=""> </option>
+            <option value="pagi" 
+                <?php 
+                  $jadwal= $datax['jadwal'];
+                    if($jadwal == "pagi") {
+                      echo "selected";
+                    }
+                ?>> Shift Pagi</option>
+            <option value="malam"
+                <?php 
+                  $jadwall= $datax['jadwal'];
+                    if($jadwall == "Malam") {
+                      echo "selected";
+                    }
+                ?>> Shift Malam</option>
+              </select>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+
+      <script type="text/javascript">
+          var m2=1;
+          function tambahrow1(){
+              
+              $("#minggu2").append('<div id="m2-'+m2+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m2[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m2[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m2[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div>');
+              m2++;
+          }
+
+          function hapusrow1(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu2");
+              var child = document.getElementById("m2-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+
+
+<!----------------------------------------------------------------------------------->
+
+    <b>Minggu 3</b>
+      <div class="container-border" id="minggu3">
+        <?php
+          $queryx = "select * from jadwal_shifting where id_pengajuan = $id AND minggu='3'";
+          $executex =  mysqli_query($conn, $queryx);
+          while ( $datax = mysqli_fetch_array($executex)){ ?>
+         
+      <div class="row">
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m3[]" placeholder="date" value="<?php echo $datax['tanggal_3'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m3[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m3[]" required="" disabled>
+            <option value=""> </option>
+            <option value="pagi" 
+                <?php 
+                  $jadwal= $datax['jadwal'];
+                    if($jadwal == "pagi") {
+                      echo "selected";
+                    }
+                ?>> Shift Pagi</option>
+            <option value="malam"
+                <?php 
+                  $jadwall= $datax['jadwal'];
+                    if($jadwall == "Malam") {
+                      echo "selected";
+                    }
+                ?>> Shift Malam</option>
+              </select>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+
+      <script type="text/javascript">
+          var m3=1;
+          function tambahrow1(){
+              
+              $("#minggu3").append('<div id="m3-'+m3+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m3[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m3[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m3[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div>');
+              m3++;
+          }
+
+          function hapusrow1(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu3");
+              var child = document.getElementById("m3-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+
+<!----------------------------------------------------------------------------------->
+
+    <b>Minggu 4</b>
+      <div class="container-border" id="minggu4">
+        <?php
+          $queryx = "select * from jadwal_shifting where id_pengajuan = $id AND minggu='4'";
+          $executex =  mysqli_query($conn, $queryx);
+          while ( $datax = mysqli_fetch_array($executex)){ ?>
+         
+      <div class="row">
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m4[]" placeholder="date" value="<?php echo $datax['tanggal_1'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m4[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m4[]" required="" disabled>
+            <option value=""> </option>
+            <option value="pagi" 
+                <?php 
+                  $jadwal= $datax['jadwal'];
+                    if($jadwal == "pagi") {
+                      echo "selected";
+                    }
+                ?>> Shift Pagi</option>
+            <option value="malam"
+                <?php 
+                  $jadwall= $datax['jadwal'];
+                    if($jadwall == "Malam") {
+                      echo "selected";
+                    }
+                ?>> Shift Malam</option>
+              </select>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+
+      <script type="text/javascript">
+          var m4=1;
+          function tambahrow1(){
+              
+              $("#minggu4").append('<div id="m4-'+m4+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m4[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m4[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m4[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div>');
+              m4++;
+          }
+
+          function hapusrow1(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu4");
+              var child = document.getElementById("m4-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+
+<!----------------------------------------------------------------------------------->
+
+    <b>Minggu 5</b>
+      <div class="container-border" id="minggu5">
+        <?php
+          $queryx = "select * from jadwal_shifting where id_pengajuan = $id AND minggu='5'";
+          $executex =  mysqli_query($conn, $queryx);
+          while ( $datax = mysqli_fetch_array($executex)){ ?>
+         
+      <div class="row">
+        <div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m5[]" placeholder="date" value="<?php echo $datax['tanggal_1'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m5[]" placeholder="date" value="<?php echo $datax['tanggal_2'] ?>" readonly> </div>
+        
+        <div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m5[]" required="" disabled>
+            <option value=""> </option>
+            <option value="pagi" 
+                <?php 
+                  $jadwal= $datax['jadwal'];
+                    if($jadwal == "pagi") {
+                      echo "selected";
+                    }
+                ?>> Shift Pagi</option>
+            <option value="malam"
+                <?php 
+                  $jadwall= $datax['jadwal'];
+                    if($jadwall == "Malam") {
+                      echo "selected";
+                    }
+                ?>> Shift Malam</option>
+              </select>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
+
+      <script type="text/javascript">
+          var m5=1;
+          function tambahrow1(){
+              
+              $("#minggu1").append('<div id="m5-'+m5+'" class="row"><div class="col-md-3"> Tanggal Awal <input type="date" class="form-control" name="tgl1_m5[]" placeholder="date"></div><div class="col-md-3"> Tanggal Akhir <input type="date" class="form-control" name="tgl2_m5[]" placeholder="date"></div><div class="col-md-3"> Jadwal <select class="form-control" name="jadwal_m5[]"><option value=""></option><option value="pagi"> Shift Pagi</option><option value="malam"> Shift Malam</option></select></div>');
+              m5++;
+          }
+
+          function hapusrow1(id){
+              var idrow = id;
+              var parent = document.getElementById("minggu5");
+              var child = document.getElementById("m5-"+idrow);
+              parent.removeChild(child);
+          }
+
+      </script>
+    </form>
+  </section>
+
+<!----------------------------------------------------------------------------------->
 
 	<div class="container">
 	  <form>
 	    <div class="form-group">
 	      <label for="comment"><h3>Comment:</h3></label>
-	      <textarea class="form-control" rows="6" id="comment" value= "<?php echo $comment;?>" readonly=""><?php echo $datax['comment']; ?>  </textarea>
+	      <textarea class="form-control" rows="6" id="comment" value= "<?php echo $comment;?>" readonly=""><?php echo $data['comment']; ?>  </textarea>
 	    </div>
 	  </form>
 	</div>
