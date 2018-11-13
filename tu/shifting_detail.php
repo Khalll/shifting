@@ -211,7 +211,7 @@ session_start();
        <form action="ajukan_shifting_config.php" method="post">
          
        
-<!----------------------------------------------------------------------------------->
+
     <b>Minggu 1</b>
       <div class="container-border" id="minggu1">
         <?php
@@ -236,7 +236,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -263,7 +263,7 @@ session_start();
 
       </script>
 
-<!----------------------------------------------------------------------------------->
+
     <b>Minggu 2</b>
       <div class="container-border" id="minggu2">
         <?php
@@ -288,7 +288,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -316,7 +316,7 @@ session_start();
       </script>
 
 
-<!----------------------------------------------------------------------------------->
+
 
     <b>Minggu 3</b>
       <div class="container-border" id="minggu3">
@@ -342,7 +342,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -369,7 +369,6 @@ session_start();
 
       </script>
 
-<!----------------------------------------------------------------------------------->
 
     <b>Minggu 4</b>
       <div class="container-border" id="minggu4">
@@ -395,7 +394,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -422,7 +421,7 @@ session_start();
 
       </script>
 
-<!----------------------------------------------------------------------------------->
+
 
     <b>Minggu 5</b>
       <div class="container-border" id="minggu5">
@@ -448,7 +447,7 @@ session_start();
             <option value="malam"
                 <?php 
                   $jadwall= $datax['jadwal'];
-                    if($jadwall == "Malam") {
+                    if($jadwall == "malam") {
                       echo "selected";
                     }
                 ?>> Shift Malam</option>
@@ -477,7 +476,7 @@ session_start();
     </form>
   </section>
 
-<!----------------------------------------------------------------------------------->
+
 
       <div align="center">
           <?php 
