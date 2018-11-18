@@ -290,7 +290,7 @@ session_start();
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>UPT-SI</b>  
+      <b>Proyek Akhir 1</b>  
     </div>
     <strong>Copyright &copy; 2018-2019 Proyek Akhir 1</strong>
   </footer>

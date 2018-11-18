@@ -197,7 +197,7 @@ session_start();
         <option> Pilih Prodi</option>
         <?php
         include('../config/conn.php');
-        $sql = "select * from prodi";
+        $sql = "select * from prodi ";
         $execute = mysqli_query($conn,$sql);
         while($data = mysqli_fetch_array($execute)){ ?>
            <option value="<?php echo $data['id']; ?>"> <?php echo $data['nama_prodi']; ?></option>
