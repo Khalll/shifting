@@ -185,7 +185,7 @@ session_start();
             <div class="icon">
               <i class="ion ion-ios-bookmarks"></i>
             </div>
-            <a href="toolbar/diajukan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -201,7 +201,7 @@ session_start();
             <div class="icon">
               <i class="ion ion-checkmark"></i>
             </div>
-            <a href="toolbar/disetujui.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -290,7 +290,7 @@ session_start();
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>UPT-SI</b>  
+      <b>Proyek Akhir 1</b>  
     </div>
     <strong>Copyright &copy; 2018-2019 Proyek Akhir 1</strong>
   </footer>
