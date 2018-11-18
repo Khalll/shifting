@@ -455,6 +455,17 @@ session_start();
     </form>
   </section>
 
+
+        <div align="center">
+          <?php 
+          if(!empty($_GET['status'])){
+            $status = 'edit';
+          }
+          if($status=='2' || $status=='edit'){ ?>
+            <a href="edit_shifting.php?id=<?php echo $_GET['id'];?>&status=edit" type="button" class="btn btn-info"><i class="fa fa-pencil fa-fw"></i>Edit</a>
+          <?php } ?>
+           
+        </div>
 <!----------------------------------------------------------------------------------->
 
 	<div class="container">

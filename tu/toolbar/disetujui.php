@@ -13,16 +13,16 @@ session_start();
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../assets/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../../assets/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../../assets/dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +40,7 @@ session_start();
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="../../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J</b> S</span>
       <!-- logo for regular state and mobile devices -->
@@ -67,7 +67,7 @@ session_start();
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/image/foto.png" class="user-image" alt="User Image">
+              <img src="../../assets/image/foto.png" class="user-image" alt="User Image">
               <span class="hidden-xs"> <?php
                 echo $_SESSION['nama'];
 
@@ -76,7 +76,7 @@ session_start();
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../assets/image/foto.png" class="img-circle" alt="User Image">
+                <img src="../../assets/image/foto.png" class="img-circle" alt="User Image">
 
                 <p> <?php
                 echo $_SESSION['nama'];
@@ -92,7 +92,7 @@ session_start();
               <li class="user-footer">
                 
                 <div class="pull-right">
-                  <a href="../config/logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../../config/logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +113,7 @@ session_start();
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../assets/image/foto.png" class="img-circle" alt="User Image">
+          <img src="../../assets/image/foto.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p> <?php
@@ -131,7 +131,7 @@ session_start();
         <li class="header">MAIN NAVIGATION</li>
 
  <li class="">
-          <a href="index.php">
+          <a href="../index.php">
             <i class="fa fa-home"></i>
             <span>Beranda</span>
            
@@ -148,8 +148,8 @@ session_start();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="cekdata.php"><i class="fa fa-book"></i> Cek Data</a></li>
-            <li><a href="data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
+            <li><a href="../cekdata.php"><i class="fa fa-book"></i> Cek Data</a></li>
+            <li><a href="../data_mahasiswa.php"><i class="fa fa-spinner"></i>Data Mahasiswa</a></li>
           </ul>
         </li>    
       </ul>
@@ -164,9 +164,7 @@ session_start();
     <!-- Content Header (Page header) -->
     <section class="content-header">
     
-        <h2 align="center"><b>Cek Data</b>
-        <small></small>
-      </h2>
+        <h2 align="center"><b>Disetujui</b></h2>
       
     </section>
 
@@ -185,14 +183,14 @@ session_start();
             <div class="icon">
               <i class="ion ion-ios-bookmarks"></i>
             </div>
-            <a href="toolbar/diajukan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="diajukan.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
 
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-gray">
             <div class="inner">
               <h3>53</h3>
 
@@ -201,7 +199,7 @@ session_start();
             <div class="icon">
               <i class="ion ion-checkmark"></i>
             </div>
-            <a href="toolbar/disetujui.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <i href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-down"></i></i>
           </div>
         </div>
         <!-- ./col -->
@@ -217,7 +215,7 @@ session_start();
             <div class="icon">
               <i class="ion ion-close"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="ditolak.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -233,28 +231,27 @@ session_start();
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="statistik.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
-    </div>
-   
-<!--/statistick-->
+      </div>
+    </section>
 
-<!--list name-->
-    <table class="table table-hover table-striped table-bordered">
+    <section>
+      <table class="table table-hover table-striped table-bordered">
       <tr>
-        <th width="10%">NO</th>
+        <th width="7%">NO</th>
         <th width="20%">NIM</th>
         <th width="20%">Nama</th>
         <th width="20%">Jurusan</th>
+        <th width="20%">Tanggal</th>
         <th width="20%">Status</th>
-        <th width="20%">Option</th>
       </tr>
 
       <?php
-      include '../config/conn.php';
-      $query = "SELECT * FROM pengajuan, mhs, prodi where pengajuan.nim = mhs.nim and mhs.prodi  = prodi.id";
+      include '../../config/conn.php';
+      $query = "SELECT * FROM pengajuan, mhs, prodi where pengajuan.nim = mhs.nim and mhs.prodi  = prodi.id AND status='1'";
       $execute = mysqli_query($conn, $query);
       $no = 1;
       while ($data = mysqli_fetch_array($execute)) {$id_pengajuan = $data['id_pengajuan'];
@@ -265,24 +262,18 @@ session_start();
         <td><?php echo $nim = $data['nim']; ?></td>
         <td><?php echo $nama = $data['nama']; ?></td>
         <td><?php echo $jurusan = $data['jurusan']; ?></td>
+        <td><?php echo $tanggal = $data['tanggal']; ?></td>
         <td><?php
         $status = $data['status'];
-
-        if ($status == "0") {
-          echo "Diajukan";
-        }elseif ($status == "1") {
-          echo "Disetujui";
-        }else{
-          echo "Ditolak";
-        }
-        ?> </td>
-
-        <td><a href="shifting_detail.php?id=<?php echo $id_pengajuan; ?>" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Cek Detail</a></td>
+        if ( $status == "1") {
+            echo "<label class='badge alert-success alert-sm'> Di Setujui </label>";
+          }
+        ?></td>
       </tr>
 
       <?php $no++; } ?>
-    </table>
-  </section>
+      </table>
+    </section>
      
   <!-- /.content -->
   </div>
@@ -305,17 +296,17 @@ session_start();
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../assets/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../assets/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../assets/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../assets/dist/js/adminlte.min.js"></script>
+<script src="../../assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../assets/dist/js/demo.js"></script>
+<script src="../../assets/dist/js/demo.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
