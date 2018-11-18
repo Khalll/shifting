@@ -185,22 +185,22 @@ session_start();
     <h2 align="center"><b>Edit Password Mahasiswa</b>
       <small></small>
       </h2>
-      <form action="edit_mhs_config.php" method="post">
+      <form action="edit_pass_config.php" method="post">
+      
+      <input type="text" name="user_id" value="<?php echo $id_user; ?>" hidden/>
+
       <b>Nim</b>
       <input type="" class="form-control" name="nim" value= "<?php echo $data['nim']; ?>" required="" readonly>
 
       <b>Nama</b>
       <input type="" class="form-control" name="nama" value= "<?php echo $data['nama'] ?>" required="" readonly>
+
       <b>Username</b>
       <input type="" class="form-control" name="username" value= "<?php echo $data['username']; ?>" required="" readonly>
 
       <b>Password</b>
       <input type="password" class="form-control" name="password" value= "<?php echo $data['password']; ?>" required="">
 
-      <b>Repassword</b>
-      <input type="password" class="form-control" name="password" value= "<?php echo $data['password']; ?>" required="">
-     
-      
       <br>
       <center><button type="submit" class="btn btn-primary" > SIMPAN </button></center>
       
